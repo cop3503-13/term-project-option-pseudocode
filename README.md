@@ -3,7 +3,7 @@
 At its most basic, a magic mirror is a display of information behind glass.  We propose a system that will configure the type of information to display on the mirror and to compile the information into a useable format.  The system should support multiple configurations and the ability to edit existing configurations.  The system should utilize these configurations to extract data from various sources, transform the data into succinct and relevant information, and output the data.  This output format should be standardized and system agnostic so that it can be used in a variety of situations.
 
 ##Project implementation option
-Here is an basic option for implementation I put together this evening.  It's a rough draft and just an option.  Feel free to suggest improvements, alternatives, errors, and anything I overlooked.  If something isn't clear, let me know.  
+Here is an basic option for implementation I put together this evening.  It's a rough draft and just an option.  Feel free to suggest improvements, alternatives, errors, and anything I overlooked.  This is very likely the case, and why we're a group.  If something isn't clear, let me know.  
 
 I tried to make it straightforward but its very possible I left something out or made a typo.  
 

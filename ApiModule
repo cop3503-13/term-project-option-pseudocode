@@ -1,0 +1,14 @@
+ApiModule : Module {
+    string baseurl;
+    string secretApiKey;
+    string httpGetJSON(string fullUrl){
+        //here we implement the httpGet
+        //using either POCO c++, or CURL
+
+        //I actually think it might be better to use curl at this point
+        //I made a working example for both and curl is a lot more lightweight
+        //luckily Object oriented programming means it's easy to change the
+        //implementation, because we only have to change it here
+
+    }
+}

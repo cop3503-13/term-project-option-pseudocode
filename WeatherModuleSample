@@ -1,0 +1,82 @@
+//weather inherits from ApiModule because it needs the httpGet
+WeatherModule: ApiModule{
+    const string baseURL = "http://api.openweathermap.org/data/2.5/weather"
+    const string secretApiKey = "abcdefgh1234"
+    bool allowMultiple = true
+    string zipCode;
+    int numberOfDaysWeather;
+
+    void configure(Mirro mirror){
+        prompt user for choices
+        set choices
+        string weatherJSON = this.getConfigurationJSON();
+        mirror.AddModule(weatherJSON);
+    }
+
+    string getConfigurationJSON(){
+        build json
+        ex json = "{
+            zipCode: zipcode,
+            numberOfDays: numberOfDaysWeather
+        }"
+        return json;
+    }
+
+    string getDataJSON(){
+        //construct full url
+        string url = baseURL + "?zipCode=" + this.zipCode + "&apikey=" + this.secretApiKey;
+        //here make api call from its parent class, ApiModule
+        string json = this.httpGetJson(url);
+        //most all of the results we get
+        //are going to have extra information
+        //so we process the information, and format it as we want
+        //Example here is some weather JSON I got with a LAT/LONG input
+        //notice the temp is in kelvin so we will have to convert
+        {
+           "coord":{
+              "lon":-82.32,
+              "lat":29.65
+           },
+           "weather":[
+              {
+                 "id":800,
+                 "main":"Clear",
+                 "description":"clear sky",
+                 "icon":"01d"
+              }
+           ],
+           "base":"stations",
+           "main":{
+              "temp":295.97,
+              "pressure":1022,
+              "humidity":11,
+              "temp_min":294.15,
+              "temp_max":297.15
+           },
+           "visibility":16093,
+           "wind":{
+              "speed":3.1,
+              "deg":100
+           },
+           "clouds":{
+              "all":1
+           },
+           "dt":1488148500,
+           "sys":{
+              "type":1,
+              "id":672,
+              "message":0.0075,
+              "country":"US",
+              "sunrise":1488110210,
+              "sunset":1488151644
+           },
+           "id":4156404,
+           "name":"Gainesville",
+           "cod":200
+        }
+
+        //after we get the data we have to process and create JSON string that we want to use
+
+        return our JSON string
+    }
+}

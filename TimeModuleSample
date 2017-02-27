@@ -1,0 +1,49 @@
+//Time inherits from Module because it doesn't need an API
+
+//but time is not so simple, we need to update often for the information to be
+//important.
+TimeModule : Module {
+    bool allowMultiple = true;
+    string jsonData;
+    int updateDuration = 60; update every 60 seconds
+    bool is24Hour;
+    bool includeDate;
+    string timezone;
+    string name
+
+
+    void configure(Mirror mirror){
+        prompt user for choices
+        ex:  24hour time or 12hour time
+        set is24Hour
+        ex: include date
+        set includeDate
+        ex: timezone
+        set timezone
+        ex: name
+        set name (name of city, or whatever user chooses)
+
+        string timeJSON = this.toJSON();
+        mirror.AddModule(timeJSON);
+    }
+
+    string getConfigurationJSON(){
+        build json
+        json = " {
+            "moduleName": "Time",
+            "moduleOptions": {
+                "is24Hour": true,
+                "includeDate": true,
+                "timezone": "EST"
+            }
+        }"
+        return json;
+    }
+
+    string getDataJSON(
+        build JSON here using configuration options
+        {moduleName: "Time", lastUpdated: DateTime, moduleData: { Time:TimeString}}
+
+        return json
+    )
+}

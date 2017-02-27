@@ -1,0 +1,27 @@
+
+filename user_configuration_filename
+filename data_filename
+
+main()
+{
+    check for existing configuration files
+
+    if exists
+        ask user to choose an initialization file
+        user_filename = chosen file
+
+    if user_filename = null
+        create a new file
+        user_filename = created file
+    }
+
+    Mirror mirror(user_configuration_filename)
+
+    if (file is new){
+        mirror.configure()
+        //get data for first time
+        write data_filename << mirror.getData()
+    }
+
+    mirror.run();
+}

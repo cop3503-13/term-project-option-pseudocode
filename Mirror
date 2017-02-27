@@ -1,0 +1,140 @@
+Mirror
+{
+
+    bool isEditing;
+    array[Modules] modules
+
+
+
+    constructor(config_filename)
+    {
+        foreach json string module in file
+            modules.add(module)
+    }
+
+    run(){
+        //watch for input from user
+        while (no input from user){
+            //this should could in a loop, and be throttled
+            //to only run once every minute, or whichever included module
+            //has the  smallest updateDuration
+            Mirror.GetData()
+            Mirror.displayData(data_filename)
+        }
+
+        //we got input from user so run configure
+        this.configure();
+        //now run again
+        this.run();
+    }
+
+    configure(){
+        displayMainOptions()
+        get input
+        loop until complete or exists{
+            switch (input){
+                if E
+                    displayExistingModules()
+                    get option input
+                    Get module from array of modules
+                    module.configure()
+                if D
+                    displayExistingModules
+                    get option input
+                    if (confirm delete){
+                        remove module from file
+                        remove module from modules
+                    }
+                if A
+                    displayAddableModules()
+                    get module choice input
+                    AddOption(input)
+                if C
+                    break;
+                if O
+                    OrganizeModules();
+                if X
+                    quit;
+                else
+                    "Sorry you chose an incorrect option."
+            }
+        }
+    }
+
+    displayMainOptions(){
+        Options are:
+        E. Edit module <-- only if modules.length > 0
+        D. Delete module <-- only if modules.length > 0
+        A. Add module
+        X. Exit
+    }
+
+    displayExistingModules(){
+        display modules
+    }
+
+    displayAddableModules(){
+        display all modules not already included, or modules that can be implemented
+        more than once.
+    }
+
+    OrganizeModules(){
+        change order of modules, either by moving them in
+        configuration file or ensuring each one has an order key
+    }
+
+    AddOption(input){
+        switch(input){
+            case time
+                TimeModule time()
+                time.configure(this)
+            case weather
+                WeatherModule weather()
+                weather.configure(this)
+            case movies
+                MoviesModule movies()
+                movies.configure(this)
+            etc
+        }
+    }
+
+    AddModuleJson(string json){
+        add json string to modules section of configuration file
+    }
+
+    GetData(){
+        here we build a json array of display details
+
+        //at first this does not need to be threaded
+
+        for each module in modules{
+            //here we check the lastUpdate time and the time between updates
+            //to check if we need to update
+            if (module.lastUpdate + module.updateDuration > DateTime.Now){
+                var module_data = module.GetData()
+                json array.add(module_data)
+            }
+        }
+
+        //but we can add threads later
+        for each module in modules{
+            check time as above, but then GetData in a thread
+        }
+        return string json_array
+    }
+
+    displayData(){
+        //first output will be just writing to console
+
+        //quickest way to have rich/formatted output will be to include
+        //html file that uses the json output file
+        //then display data would open that file in a browser
+        //the benefits of this solution would be platform independence (windows/linux etc) and
+        //also independent of this program.  can send json file to another computer
+        //so this program could be run from your main computer to update your magic
+        //mirror(s) in your home. you avoid having to connect a keyboard to your magic mirror.
+
+
+        //alternative display options can be implemented as the group desires
+    }
+}

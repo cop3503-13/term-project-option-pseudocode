@@ -1,0 +1,14 @@
+Module (abstract){
+    //some modules may be included more than once, but maybe some shouldn't be
+    bool AllowMultiple;
+    //int how often should we update in seconds (different things need different update times)
+    int updateDuration
+
+    //when was it last updated
+    datetime lastupdate;
+
+    requires void configure()
+    requires string getConfigurationJSON()
+    requires string getDataJSON()
+
+}

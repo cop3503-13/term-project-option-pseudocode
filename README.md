@@ -5,6 +5,17 @@ Here is an basic option for implementation I put together this evening.  It's a 
 
 I tried to make it straightforward but its very possible I left something out or made a typo.  
 
+See files Main, Mirror, Module, ApiModule, WeatherModule, TimeModule
+
+
+
+
+
+
+
+
+
+##Note: the below is just some notes on HTTP requests, not the outline. Outline are the files Main, Mirror, Module, ApiModule, TimeModule, WeatherModule
 
 
 ##HTTP requests in c++

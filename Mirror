@@ -19,7 +19,7 @@ Mirror
             //to only run once every minute, or whichever included module
             //has the  smallest updateDuration
             Mirror.GetData()
-            Mirror.displayData(data_filename)
+            Mirror.publishData(data_filename)
         }
 
         //we got input from user so run configure
@@ -123,7 +123,7 @@ Mirror
         return string json_array
     }
 
-    displayData(){
+    publishData(){
         //first output will be just writing to console
 
         //quickest way to have rich/formatted output will be to include
@@ -136,5 +136,8 @@ Mirror
 
 
         //alternative display options can be implemented as the group desires
+        //but the project definition is to develop a system for configuring, collating+organizing,
+        //and outputting in a standardized pre-defined format
+        //professor doesn't want us to worry about a graphical UI moreso than the actual program.
     }
 }

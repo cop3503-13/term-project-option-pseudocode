@@ -1,5 +1,8 @@
+//NOTE: at the moment, this supports multiple configuration files, but only updates the one chosen by the user.  
+//an ideal implementation would run one mirror for each valid configuration file.
 
-filename user_configuration_filename
+
+filename current_user_configuration_filename
 filename data_filename
 
 main()
@@ -8,14 +11,14 @@ main()
 
     if exists
         ask user to choose an initialization file
-        user_filename = chosen file
+        current_user_configuration_filename = chosen file
 
     if user_filename = null
         create a new file
-        user_filename = created file
+        current_user_configuration_filename = created file
     }
 
-    Mirror mirror(user_configuration_filename)
+    Mirror mirror(current_user_configuration_filename)
 
     if (file is new){
         mirror.configure()
